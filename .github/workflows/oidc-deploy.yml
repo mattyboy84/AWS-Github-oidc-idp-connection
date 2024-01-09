@@ -1,0 +1,32 @@
+name: deploy
+
+run-name: deploying on a push event
+
+env:
+  STAGE: prod
+  STACK_NAME: abc123
+  STACK_REGION: eu-west-2
+
+permissions:
+  id-token: write # required for OIDC JWT auth to aws
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v4
+      - uses: aws-actions/setup-sam@v2
+      - uses: configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::{AWS::AccountId}:role/Github-AWS-OIDC-connection-Role
+          aws-region: $STACK_REGION
+      - name: print current assumed role
+        run: aws sts get-caller-identity
