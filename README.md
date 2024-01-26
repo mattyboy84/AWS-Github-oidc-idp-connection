@@ -1,5 +1,7 @@
 # AWS-Github-oidc-idp-connection
 
+![](images/diagram.png)
+
 This stack deploys an AWS IAM Identtiy Provider for `Github Actions`. The role output by this stack can be assumed in your workflow to deploy to AWS.
 ![](images/stack-outputs.png)
 
