@@ -8,7 +8,7 @@ Parameters:
   OIDCProviderThumbprint:
     Type: String
     Description: Thumbprint of the github actions provider (AWS No longer validate thumbprints for Github, Gitlab, Auth0 & Google https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html (A value must still be provided)). Can also be a comma seperated list of Thumbprints. E.g. a,b,c
-    Default: 'uuid'
+    Default: '1b511abead59c6ce207077c0bf0e0043b1382612'
   OIDCProviderClientId:
     Type: String
     Description: ClientId / Audience for the github actions provider. Can also be a comma seperated list of Clients. E.g. a,b,c
